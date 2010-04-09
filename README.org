@@ -1,0 +1,26 @@
+
+* Jquery Twitter 'mini' plugin
+
+  Made for learning purposes on how to work with jquery, can see about it here: 
+
+** How to Use:
+
+Assuming that you have an html elemnt like:
+
+#+BEGIN_SRC HTML
+<div id='twitter'></div>
+#+END_SRC
+
+Then Call
+
+#+BEGIN_SRC javascript
+$(function() {
+  $('#twitter').twitter({'user':'al3xandr3','count':3});
+});
+#+END_SRC
+
+** It depends on jQuery lib, so include in HTML page:
+
+#+BEGIN_SRC HTML
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
+#+END_SRC
