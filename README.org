@@ -1,7 +1,8 @@
 
 * Jquery Twitter 'mini' plugin
 
-  Made for learning purposes on how to work with jquery, can see about it here: 
+  Made for learning purposes on how to work with jquery, can see about
+  it here: [http://alexandrenotebook.blogspot.com/][Blog]
 
 ** How to Use:
 

@@ -66,7 +66,7 @@
 // How to use:
 // If you have already in html: <div id='twitter'></div>, then:
 // $(function() {
-//   $('#twitter').twitter({'user':'al3xandr3','count':3});
+//   $('#twitter').twitter({'user':'al3xandr3','count':4});
 // });
 
 // Depends on: 
