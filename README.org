@@ -1,7 +1,7 @@
 
 * Jquery Twitter 'mini' plugin
 
-  Made for learning how to work with jquery, can see about
+  Made for learning about jquery, can see about
   it here: [[http://alexandrenotebook.blogspot.com/]]
 
 ** How to Use:
@@ -12,13 +12,15 @@ Assuming that you have an html element like:
 <div id='twitter'></div>
 #+END_SRC
 
-Then call:
+On you html page, then call:
 
 #+BEGIN_SRC javascript
 $(function() {
   $('#twitter').twitter({'user':'al3xandr3','count':3});
 });
 #+END_SRC
+
+Passing as arguments the user and the count of status to be obtained
 
 ** It depends on jQuery lib, so include in HTML page:
 

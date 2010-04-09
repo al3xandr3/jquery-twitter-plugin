@@ -2,7 +2,7 @@
 (function($) {
   $.fn.twitter = function(options){
     
-    var settings = jQuery.extend({user: "al3xandr3", count: 3}, options),
+    var settings = jQuery.extend({user: "al3xandr3", count: 2}, options),
     
     // source: http://stackoverflow.com/questions/37684/replace-url-with-html-links-javascript
     replaceURLWithHTMLLinks = function (text) {
@@ -39,7 +39,7 @@
     this.each(function(){
       $.ajax({
 	url: "http://twitter.com/status/user_timeline/" + settings.user + 
-             ".json?count="+ settings.count +"&callback=?",
+             ".json?count="+ (settings.count+1) +"&callback=?",
 	dataType: 'json',
 	success: function (data) {
           $.each(data, function (i, item) {
@@ -66,7 +66,7 @@
 // How to use:
 // If you have already in html: <div id='twitter'></div>, then:
 // $(function() {
-//   $('#twitter').twitter({'user':'al3xandr3','count':4});
+//   $('#twitter').twitter({'user':'al3xandr3','count':3});
 // });
 
 // Depends on: 
