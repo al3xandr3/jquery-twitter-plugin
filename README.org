@@ -1,18 +1,18 @@
 
 * Jquery Twitter 'mini' plugin
 
-  Made for learning purposes on how to work with jquery, can see about
-  it here: [http://alexandrenotebook.blogspot.com/][Blog]
+  Made for learning how to work with jquery, can see about
+  it here: [[http://alexandrenotebook.blogspot.com/]]
 
 ** How to Use:
 
-Assuming that you have an html elemnt like:
+Assuming that you have an html element like:
 
 #+BEGIN_SRC HTML
 <div id='twitter'></div>
 #+END_SRC
 
-Then Call
+Then call:
 
 #+BEGIN_SRC javascript
 $(function() {
