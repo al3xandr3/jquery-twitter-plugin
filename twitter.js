@@ -45,7 +45,7 @@
           $.each(data, function (i, item) {
             
             //text
-            $this.hide().html("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
+            $this.hide().append("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
 			      "&nbsp&nbsp</p>").fadeIn('slow');
             
             //date
