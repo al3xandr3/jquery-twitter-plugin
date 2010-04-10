@@ -21,18 +21,18 @@ It depends on jQuery library, so include in your HTML page:
 
 *How to Use*
 
-Using jQuery pick an html element that you want to use, then call
-/twitter(..)/ method passing as arguments the twitter 'user' and a 'count' of
-the latest status updates you want to see displayed.
+Using jQuery pick an html element that you want to use, then call the
+/twitter(..)/ method giving as arguments the twitter 'user' and a the 'count' of
+the latest 'tweets' you want to see displayed.
 
 example:
 
-When having this div:
+For the html div:
 #+BEGIN_SRC HTML
 <div id='twitter'></div>
 #+END_SRC
 
-Then call:
+Call:
 #+BEGIN_SRC javascript
 $(function() {
   $('#twitter').twitter({'user':'al3xandr3','count':3});
