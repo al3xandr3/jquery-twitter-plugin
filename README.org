@@ -1,17 +1,15 @@
 
 * jQuery Twitter 'mini' plugin
 
-Here's a little jQuery plugin, made for learning about jQuery. It
-allows to display directly on your web page(blog, etc..) your latest
-twitter status.
+Here's a little jQuery plugin I made for learning about jQuery. 
+It allows to display on a web page (personal blog, community portal,
+etc..) the latest twitter status for a given twitter user.
 
 See more details in [[http://alexandrenotebook.blogspot.com/]]
 
-
-
 ** Instructions:
 
-_Dependency_
+*Dependency*
 
 It depends on jQuery library, so include in your HTML page:
 
@@ -19,21 +17,22 @@ It depends on jQuery library, so include in your HTML page:
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>
 #+END_SRC
 
-_How to Use_
+*How to Use*
 
-Pick an html element where you want to insert the twitter status, for
+Using jQuery pick an html element that you want to use, and then call
+/twitter(..)/, giving as arguments the twitter 'user' and a 'count' of
+the latest status updates you want to see displayed.
+
 example:
 
+When having this div:
 #+BEGIN_SRC HTML
 <div id='twitter'></div>
 #+END_SRC
 
-And then call:
-
+Then call:
 #+BEGIN_SRC javascript
 $(function() {
   $('#twitter').twitter({'user':'al3xandr3','count':3});
 });
 #+END_SRC
-
-Give as arguments the user and the count of status to be collected.

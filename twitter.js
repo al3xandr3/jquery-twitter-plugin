@@ -44,8 +44,8 @@
           $.each(data, function (i, item) {
             
             //text
-            $(this).hide().html("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
-					"&nbsp&nbsp</p>").fadeIn('slow');
+            $(this).hide().append("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
+				  "&nbsp&nbsp</p>").fadeIn('slow');
             
             //date
             if (typeof prettyDate(item.created_at) !== "undefined") {
