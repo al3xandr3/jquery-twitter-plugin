@@ -2,14 +2,13 @@
 (function($) {
   $.fn.twitter = function(options){
     
-    var settings = jQuery.extend({user: "al3xandr3", count: 2}, options),
+    var settings = $.extend({user: "al3xandr3", count: 2}, options),
     
     // source: http://stackoverflow.com/questions/37684/replace-url-with-html-links-javascript
     replaceURLWithHTMLLinks = function (text) {
       var exp = /(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/ig;
       return text.replace(exp,"<a href='$1' target='_blank'>$1</a>"); 
     },
-    
     
     // source: http://ejohn.org/blog/javascript-pretty-date/
     // slightly modified, so errors are likelly my fault
@@ -45,7 +44,7 @@
           $.each(data, function (i, item) {
             
             //text
-            $("#twitter").hide().append("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
+            $(this).hide().html("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
 					"&nbsp&nbsp</p>").fadeIn('slow');
             
             //date
@@ -64,7 +63,7 @@
 })(jQuery);
 
 // How to use:
-// If you have already in html: <div id='twitter'></div>, then:
+// When you have for example: <div id='twitter'></div>, then:
 // $(function() {
 //   $('#twitter').twitter({'user':'al3xandr3','count':3});
 // });
