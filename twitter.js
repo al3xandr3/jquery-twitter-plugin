@@ -35,7 +35,8 @@
 	Math.floor( day_diff / 365 ) + " years ago";
     };
     
-    this.each(function(){
+    return this.each(function(){
+      var $this = $(this); //holds a reference to the current element
       $.ajax({
 	url: "http://twitter.com/status/user_timeline/" + settings.user + 
              ".json?count="+ (settings.count+1) +"&callback=?",
@@ -44,8 +45,8 @@
           $.each(data, function (i, item) {
             
             //text
-            $(this).hide().append("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
-				  "&nbsp&nbsp</p>").fadeIn('slow');
+            $this.hide().html("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
+			      "&nbsp&nbsp</p>").fadeIn('slow');
             
             //date
             if (typeof prettyDate(item.created_at) !== "undefined") {
@@ -58,7 +59,6 @@
           });}
       });
     });
-    return this;
   };
 })(jQuery);
 
