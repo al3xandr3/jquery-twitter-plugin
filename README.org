@@ -1,6 +1,11 @@
 * jQuery Twitter 'mini' plugin
 
-Here's a little jQuery plugin for displaying a twitter feed into a web page. The goal was to put my latest 'tweets' on my blog, and also learn jQuery. Ended up making a 'mini' jQuery plugin that can easily be added into any web page. 
+Here's a little jQuery plugin for displaying a twitter feed into a web
+page. 
+The goal was to put my latest 'tweets' on my blog, and also learn
+jQuery. 
+Ended up making a 'mini' jQuery plugin that can easily be
+added into any web page. 
 
 See more details in [[http://alexandrenotebook.blogspot.com/2010/04/jquery-twitter-mini-plugin.html]]
 
