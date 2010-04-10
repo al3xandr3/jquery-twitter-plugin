@@ -40,7 +40,7 @@
       
       $.ajax({
 	url: "http://twitter.com/status/user_timeline/" + settings.user + 
-             ".json?count="+ (settings.count+1) +"&callback=?",
+             ".json?count="+ settings.count +"&callback=?",
 	dataType: 'json',
 	success: function (data) {
 	  $this.html(""); //clean previous html
