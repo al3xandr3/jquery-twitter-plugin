@@ -10,12 +10,15 @@
       return text.replace(exp,"<a href='$1' target='_blank'>$1</a>"); 
     },
     
-    // source: http://ejohn.org/blog/javascript-pretty-date/
+   // source: http://ejohn.org/blog/javascript-pretty-date/
     // slightly modified, so errors are likelly my fault
-    prettyDate = function (time) {
-      var date = new Date((time || "")),
-      diff = (((new Date()).getTime() - date.getTime()) / 1000),
-      day_diff = Math.floor(diff / 86400);
+    prettyDate = function (twt_time) {
+      var time_split = (twt_time && twt_time.split(" ")) || "",
+          time_value = time_split[1] + " " + time_split[2] + ", " + 
+	               time_split[5] + " " + time_split[3],
+          date = new Date(time_value),
+          diff = (((new Date()).getTime() - date.getTime()) / 1000),
+          day_diff = Math.floor(diff / 86400);
       
       if ( isNaN(day_diff) || day_diff < 0 )
       {
