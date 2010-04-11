@@ -5,9 +5,13 @@
     var settings = $.extend({user: "al3xandr3", count: 2}, options),
     
     // source: http://stackoverflow.com/questions/37684/replace-url-with-html-links-javascript
+    // added the twitter users @thing 
     replaceURLWithHTMLLinks = function (text) {
-      var exp = /(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/ig;
-      return text.replace(exp,"<a href='$1' target='_blank'>$1</a>"); 
+      var lnks = /(\b(https?|ftp|file):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/ig,
+          usrs = /\B@([_a-z0-9]+)/ig;
+
+      return text.replace(lnks,"<a href='$1' target='_blank'>$1</a>").replace(usrs, 
+			       "@<a href='http://twitter.com/$1' target='_blank'>$1</a>");
     },
     
    // source: http://ejohn.org/blog/javascript-pretty-date/
