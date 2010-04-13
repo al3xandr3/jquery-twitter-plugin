@@ -55,16 +55,15 @@
 	  $.each(data, function (i, item) {
             
             //text
-            $this.hide().append("<p id=" + item.id + ">" + replaceURLWithHTMLLinks(item.text) + 
-			      "&nbsp&nbsp</p>").fadeIn('slow');
-            
+            $this.hide().append("<p id=" + item.id + ">" + 
+				replaceURLWithHTMLLinks(item.text) + 
+				"</p>").fadeIn('slow');
+
             //date
-            if (typeof prettyDate(item.created_at) !== "undefined") {
-	      $("<br>").appendTo("#" + item.id); //line break
-              $("<a>" + prettyDate(item.created_at) + "</a>").attr( { //link on the date
-		'href':   ('http://twitter.com/' + settings.user + '/status/' + item.id),
-		'target': '_blank'
-              }).css("font-size", "75%").appendTo("#" + item.id);
+            if (typeof prettyDate(item.created_at) !== "undefined") {	    
+              $("<div><a style='font-size: 80%;' href='http://twitter.com/" +
+		settings.user + "/status/" + item.id + "' target='_blank'>" +
+		prettyDate(item.created_at) + "</a></div>").appendTo("#" + item.id);
             }
           });}
       });
