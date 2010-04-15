@@ -55,9 +55,9 @@
 	  $.each(data, function (i, item) {
             
             //text
-            $this.hide().append("<p id=" + item.id + ">" + 
-				replaceURLWithHTMLLinks(item.text) + 
-				"</p>").fadeIn();
+            $this.append("<p id=" + item.id + ">" + 
+			 replaceURLWithHTMLLinks(item.text) + 
+			 "</p>");
 
             //date
             if (typeof prettyDate(item.created_at) !== "undefined") {	    
