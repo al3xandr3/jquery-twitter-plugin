@@ -57,7 +57,7 @@
             //text
             $this.hide().append("<p id=" + item.id + ">" + 
 				replaceURLWithHTMLLinks(item.text) + 
-				"</p>").fadeIn('slow');
+				"</p>").fadeIn();
 
             //date
             if (typeof prettyDate(item.created_at) !== "undefined") {	    
