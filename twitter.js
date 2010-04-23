@@ -2,7 +2,7 @@
 /*jslint bitwise: true, browser: true, eqeqeq: true, immed: true, newcap: true, nomen: true, onevar: true, plusplus: true, white: true, widget: true, undef: true, indent: 2*/
 
 (function ($) {
-  $.fn.twitter = function (options) {
+  $.fn.twitter = function (options, callback) {
     
     var settings = $.extend({user: "al3xandr3", count: 2}, options),
     
@@ -44,7 +44,7 @@
         Math.floor(day_diff / 365) + " years ago";
     };
     
-    return this.each(function () {
+    this.each(function () {
       var $this = $(this); //holds a reference to the current element
       
       $.ajax({
@@ -71,14 +71,31 @@
         }
       });
     });
+    
+    // Invoke the callback giving as argument the processed 
+    // and final html element we are working on
+    if (typeof callback === "function") {
+      callback(this);
+    }
+
+    return this;
   };
 }(jQuery));
 
+/*
 // How to use:
 // When you have for example: <div id='twitter'></div>, then:
-// $(function() {
-//   $('#twitter').twitter({'user':'al3xandr3','count':3});
-// });
-
+$(function() {
+  
+  $('#twitter').twitter({'user': 'al3xandr3', 'count': 3});
+  
+  // from version 2.0:
+  // allows a callback to be called when everything is 
+  // processed and ready to display
+  $('#twitter').twitter({'user': 'al3xandr3', 'count': 3}, function (el) { 
+    el.hide().show('slow');
+  });
+});
+*/
 // Depends on: 
 // <script type="text/javascript" src="http://code.jquery.com/jquery-latest.pack.js"></script>

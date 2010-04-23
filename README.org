@@ -38,3 +38,18 @@ $(function() {
   $('#twitter').twitter({'user':'al3xandr3','count':3});
 });
 #+END_SRC
+
+*New on Version 2.0*
+
+Introduced an optional 2nd argument, a callback function that gets
+called when the twitter data is recieved and processed.
+
+The callback recieves 1 arguments which is the element we are working
+on(the 'this').
+
+Use like:
+#+BEGIN_SRC javascript
+$('#twitter').twitter({'user': 'al3xandr3', 'count': 3}, function (el) { 
+  el.hide().show('slow');
+});
+#+END_SRC
