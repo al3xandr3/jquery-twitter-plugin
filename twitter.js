@@ -5,6 +5,8 @@
   $.fn.twitter = function (options, callback) {
     
     var settings = $.extend({user: "al3xandr3", count: 2}, options),
+        tw_data = "",
+        elems = this, //to be available inside the displayData func
     
     // source: http://stackoverflow.com/questions/37684/replace-url-with-html-links-javascript
     // added the twitter users @thing 
@@ -42,41 +44,48 @@
         day_diff < 31 && Math.floor(day_diff / 7) + " weeks ago" ||
         day_diff < 365 && Math.floor(day_diff / 31) + " months ago" || 
         Math.floor(day_diff / 365) + " years ago";
-    };
+    },
     
-    this.each(function () {
-      var $this = $(this); //holds a reference to the current element
-      
-      $.ajax({
-        url: "http://twitter.com/status/user_timeline/" + settings.user + 
-             ".json?count=" + settings.count + "&callback=?",
-        dataType: 'json',
-        success: function (data) {
-          $this.html(""); //clean previous html
-          
-          $.each(data, function (i, item) {
-            
-            //text
-            $this.append("<p id=" + item.id + ">" + 
-                         replaceURLWithHTMLLinks(item.text) + 
-                         "</p>");
+    // Appends the twitter status data to each of the selected html elements
+    displayData = function (dta) {
 
-            //date
-            if (typeof prettyDate(item.created_at) !== "undefined") {       
-              $("<div><a style='font-size: 80%;' href='http://twitter.com/" +
-                settings.user + "/status/" + item.id + "' target='_blank'>" +
-                prettyDate(item.created_at) + "</a></div>").appendTo("#" + item.id);
-            }
-          }); 
-        }
-      });
-    });
+      //iterates over each selected html elems
+      elems.each(function () {
+        var $this = $(this); //holds a reference to the current element
+        
+        $this.html(""); //clean previous html of current element
+  
+        //iterates each of the recieved twitter status
+        $.each(dta, function (i, item) {
     
-    // Invoke the callback giving as argument the processed 
-    // and final html element we are working on
-    if (typeof callback === "function") {
-      callback(this);
-    }
+          //text
+          $this.append("<p id=" + item.id + ">" + 
+                         replaceURLWithHTMLLinks(item.text) + 
+                       "</p>");
+          
+          //date
+          if (typeof prettyDate(item.created_at) !== "undefined") {       
+            $("<div><a style='font-size: 80%;' href='http://twitter.com/" +
+              settings.user + "/status/" + item.id + "' target='_blank'>" +
+              prettyDate(item.created_at) + "</a></div>").appendTo("#" + item.id);
+          }
+        }); 
+      });
+
+      // Invoke the callback giving as argument the processed 
+      // and final html element we are working on
+      if (typeof callback === "function") {
+        callback(elems);
+      }
+    };
+
+    // requests the twitter data;
+    $.ajax({
+      url: "http://twitter.com/status/user_timeline/" + settings.user + 
+        ".json?count=" + settings.count + "&callback=?",
+      dataType: 'json',
+      success: displayData
+    });
 
     return this;
   };
