@@ -18,8 +18,9 @@
                                "@<a href='http://twitter.com/$1' target='_blank'>$1</a>");
     },
     
-   // source: http://ejohn.org/blog/javascript-pretty-date/
+    // source: http://ejohn.org/blog/javascript-pretty-date/
     // slightly modified, so errors are likelly my fault
+    // Data format expected: "Thu Apr 29 15:21:27 +0000 2010"
     prettyDate = function (twt_time) {
       var time_split = (twt_time && twt_time.split(" ")) || "",
           time_value = time_split[1] + " " + time_split[2] + ", " + 
