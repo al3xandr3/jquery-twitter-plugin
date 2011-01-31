@@ -26,7 +26,8 @@
           time_value = time_split[1] + " " + time_split[2] + ", " + 
                        time_split[5] + " " + time_split[3],
           date = new Date(time_value),
-          diff = (((new Date()).getTime() - date.getTime()) / 1000),
+          //takes off local timezone
+          diff = (((new Date()).getTime() - date.getTime()) / 1000) - (new Date().getTimezoneOffset() * -1 * 60),  
           day_diff = Math.floor(diff / 86400);
       
       if (isNaN(day_diff) || day_diff < 0)
@@ -67,7 +68,7 @@
           //date
           if (typeof prettyDate(item.created_at) !== "undefined") {       
             $("<div><a style='font-size: 80%;' href='http://twitter.com/" +
-              settings.user + "/status/" + item.id + "' target='_blank'>" +
+              settings.user + "/status/" + item.id_str + "' target='_blank'>" +
               prettyDate(item.created_at) + "</a></div>").appendTo("#" + item.id);
           }
         }); 
@@ -82,8 +83,8 @@
 
     // requests the twitter data;
     $.ajax({
-      url: "http://twitter.com/status/user_timeline/" + settings.user + 
-        ".json?count=" + settings.count + "&callback=?",
+      url: "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + settings.user + 
+        "&count=" + settings.count + "&callback=?",
       dataType: 'json',
       success: displayData
     });
