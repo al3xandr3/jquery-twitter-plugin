@@ -48,9 +48,26 @@
         Math.floor(day_diff / 365) + " years ago";
     },
     
-    // Appends the twitter status data to each of the selected html elements
-    displayData = function (dta) {
+    getTimeline = function (user, count, callback) {
+      // requests the twitter data;
+      $.ajax({
+        url: "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + user + 
+          "&count=" + count + "&callback=?" + "&include_rts=true",
+        dataType: 'json',
+        success: function (data) {  
+          callback(data, count); 
+        }
+      });
+    },
 
+    // Appends the twitter status data to each of the selected html elements
+    displayData = function (dta, count) {
+
+      /* For when i exclude RT from dta and still want to see settings.count */
+      if (dta.length < settings.count && count < 15) {
+        return getTimeline(settings.user, count += 1, displayData);
+      }
+      
       //iterates over each selected html elems
       elems.each(function () {
         var $this = $(this); //holds a reference to the current element
@@ -79,16 +96,10 @@
       if (typeof callback === "function") {
         callback(elems);
       }
-    };
-
-    // requests the twitter data;
-    $.ajax({
-      url: "http://api.twitter.com/1/statuses/user_timeline.json?screen_name=" + settings.user + 
-        "&count=" + settings.count + "&callback=?",
-      dataType: 'json',
-      success: displayData
-    });
-
+    }; 
+      
+    getTimeline(settings.user, settings.count, displayData);
+    
     return this;
   };
 }(jQuery));
